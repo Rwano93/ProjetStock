@@ -2,14 +2,15 @@
 
 
 include '../../bdd/SQLConnexion.php';
-include 'Utilisateur.php';
+include '../utilisateur/Utilisateur.php';
 
 
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
+$email = $_POST['email'];
 $mdp = $_POST['mdp'];
 $remdp = $_POST['remdp'];
-$email = $_POST['email'];
+
 
 if ($remdp == $mdp) {
     $newmdp = password_hash($mdp,PASSWORD_DEFAULT);

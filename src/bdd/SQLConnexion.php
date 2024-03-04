@@ -1,8 +1,7 @@
 <?php
 
-include "../php/utilisateur/Utilisateur.php";
 
-class SQLConnexion {
+class SQLConnexion{
     private $bdd;
     private $serveur = "localhost" ;
     private $nomBdd = "projetstock" ;

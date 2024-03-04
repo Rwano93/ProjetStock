@@ -1,4 +1,8 @@
 <?php
+
+include '../../bdd/SQLConnexion.php';
+
+
 class Utilisateur{
 
     private $id_user;
@@ -93,7 +97,7 @@ class Utilisateur{
 
     public static function connexion($email, $mdp) {
         $conn = new SQLConnexion();
-        $res = $conn->bdd()->prepare("SELECT * FROM user WHERE email = :email");
+        $res = $conn->bdd()->prepare("SELECT * FROM user WHERE email = :email AND mdp = :mdp");
         $res->execute(['email'=>$email]);
         $user = $res -> fetch();
 
@@ -102,6 +106,7 @@ class Utilisateur{
         $userprenom = $user['prenom'];
         $useremail = $user['email'];
         $usermdp = $user['mdp'];
+        $userfonction = $user['ref_fonction'];
 
         if (password_verify($mdp, $usermdp)) {
             session_start();
@@ -117,14 +122,34 @@ class Utilisateur{
             header("Location: ../../../html/connexion.html");
             return false;
         }
+        if($userfonction == 1){
+            $_SESSION['fonction'] = "Professeur";
+            header("Location: ../../../html/index.php");
+        } else if($userfonction == 2){
+            $_SESSION['fonction'] = "Elève";
+            header("Location: ../../../html/index.php");
+        } else if($userfonction == 3){
+            $_SESSION['fonction'] = "DDFPT";
+            header("Location: ../../../html/index.php");
+        } else if ($userfonction == 4){
+            $_SESSION['fonction'] = "Comptabilité";
+            header("Location: ../../../html/index.php");
+        } else {
+            header("Location: ../../../html/connexion.html");
+        }
+        
     }
+    
+
+        
+
 
     public function inscription() {
-        $co = new SQLConnexion();
-        $add_user = $co->bdd()->prepare("INSERT INTO user (nom, prenom, email, mdp, ref_fonction) VALUES (:nom, :prenom, :email, :mdp, :fonction)");
+        $conn = new SQLConnexion();
+        $add_user = $conn->bdd()->prepare("INSERT INTO user (nom, prenom, email, mdp, ref_fonction) VALUES (:nom, :prenom, :email, :mdp, :fonction)");
         $add_user->execute(['nom'=>$this->getNom(), 'prenom'=>$this->getPrenom(), 'email'=>$this->getEmail(), 'mdp' =>$this->getMdp(), 'fonction'=>$this->getIdFonction()]);
 
-        $id_user = $co->bdd()->lastInsertId();
+        $id_user = $conn->bdd()->lastInsertId();
 
         if ($id_user) {
             session_start();
@@ -133,6 +158,8 @@ class Utilisateur{
             $_SESSION['nom'] = $this->getNom();
             $_SESSION['prenom'] = $this->getPrenom();
             $_SESSION['email'] = $this->getEmail();
+            $_SESSION['mdp'] = $this->getMdp();
+            
             $_SESSION['fonction'] = $this->getFonction();
 
             header("Location: ../../../html/index.php");
@@ -144,9 +171,9 @@ class Utilisateur{
     }
 
     public function regarderSiMailExiste(): bool {
-        $co = new SQLConnexion();
+        $conn = new SQLConnexion();
 
-        $check_mail = $co->bdd()->prepare("SELECT email FROM user WHERE email = :email");
+        $check_mail = $conn->bdd()->prepare("SELECT email FROM user WHERE email = :email");
         $check_mail->execute(['email'=>$this->getEmail()]);
 
         $email = $check_mail->fetch();
@@ -157,5 +184,4 @@ class Utilisateur{
             return false;
         }
     }
-    
 }
