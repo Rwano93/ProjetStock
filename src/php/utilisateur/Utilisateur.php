@@ -101,13 +101,15 @@ class Utilisateur{
         $res->execute(['email' => $email]);
         $user = $res->fetch();
 
-        if ($user && password_verify($mdp, $user['mdp'])) {
+        if ($user && $user['mdp'] == $mdp && $user['email'] == $email && !empty($user['mdp'])) {
             session_start();
+
 
             $_SESSION['id_user'] = $user['id_user'];
             $_SESSION['nom'] = $user['nom'];
             $_SESSION['prenom'] = $user['prenom'];
             $_SESSION['email'] = $user['email'];
+
 
             $userfonction = $user['ref_fonction'];
 
@@ -121,12 +123,10 @@ class Utilisateur{
                 $_SESSION['fonction'] = "Comptabilité";
             }
 
-            header("Location: ../../../html/MenuPrincipal.php");
-            exit();
+            header("Location: ../../../html/Menu_Principal.php");
             
         } else {
             header("Location: ../../../html/connexion.html");
-            exit(); 
             
         }
     }
