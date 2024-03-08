@@ -19,6 +19,7 @@
             padding: 20px;
             border-radius: 10px; /* Ajout du border-radius */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            align-items: center;
         }
 
         .container {

@@ -72,6 +72,7 @@ input[type="submit"]:hover {
     background: linear-gradient(90deg, #ff5f03 0%, #ff5f03 100%);
     color: #ffffff;
     border: solid 2px #ffffff;
+	align-items: center;
 }
 
 .btn-rouge:hover {
