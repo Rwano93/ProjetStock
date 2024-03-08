@@ -54,13 +54,14 @@ class Matiere{
         $req = $bdd->prepare("UPDATE matiere SET nom = :nom, longeur = :longeur, hauteur = :hauteur, epaisseur = :epaisseur, largeur = :largeur, diametre = :diametre WHERE id = :id");
         $req -> execute(array(
             'nom '=> $this->nom,
-            'longeur'=>$this->longeur,
+            'longeur'=>$this->longeur, 
             'hauteur'=>$this->hauteur,
             'epaisseur'=>$this->epaisseur,
             'largeur'=> $this->largeur,
             'diametre'=>$this->diametre
 
         ));
+        $res= $req->fetch();
 
         if($req){
             echo "modification reussi";
