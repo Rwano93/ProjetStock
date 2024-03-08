@@ -3,22 +3,27 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
     text-align: center;
     padding: 10px;
-    background-color: #3498db; /* Bleu vif */
+    background-color: rgb(23, 0, 172);
     color: #fff;
     margin: 0;
     border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f8f8f8; /* Blanc légèrement grisé */
+    background-color: #f8f8f8;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     position: relative;
@@ -27,10 +32,10 @@ h1 {
 .image {
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 80px; /* Réduire la taille du logo de 100px */
-    height: 80px; /* Réduire la taille du logo de 100px */
+    top: 10px; /* Ajuster la position en haut */
+    right: 10px; /* Ajuster la position à droite */
+    width: 60px; /* Réduire la taille de l'image */
+    height: 60px; /* Réduire la taille de l'image */
     object-fit: cover;
 }
 
@@ -66,7 +71,7 @@ select {
 }
 
 button {
-    background-color: #f8f8f8; /* Blanc légèrement grisé */
+    background-color: #f8f8f8;
     color: #333;
     padding: 10px 20px;
     border: 1px solid #ccc;
@@ -77,5 +82,5 @@ button {
 }
 
 button:hover {
-    background-color: #e0e0e0; /* Blanc encore plus grisé au survol */
+    background-color: #e0e0e0;
 }

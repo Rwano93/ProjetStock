@@ -3,7 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link rel="stylesheet" href="../css/gestionDeProjet.css">
-    <h1>Bon de débit Matière</h1>
+    
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,13 +14,14 @@
         }
 
         h1 {
+            align-items: center;
             text-align: center;
             padding: 10px;
             background-color: #3498db; /* Bleu vif */
             color: #fff;
             margin: 0;
             border-radius: 5px;
-            
+
         }
 
         .container {
@@ -100,6 +102,7 @@
     <img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="">
 </head>
 <body>
+
     <div class="container">
         <h1>Gestion de débit</h1>
 
@@ -110,10 +113,16 @@
         <br>
         <div class="checkbox-container">
             Filière:
-            <label><input type="checkbox" name="tu"> TU</label>
-            <label><input type="checkbox" name="cprp"> CPRP</label>
-            <label><input type="checkbox" name="cged"> CQPM</label>
-            <label><input type="checkbox" name="spe"> SPE</label>
+            <label><input type="checkbox" name="tu" value="TU"> TU</label>
+            <label><input type="checkbox" name="cprp" value="CPRP"> CPRP</label>
+            <label><input type="checkbox" name="cged" value="CQPM"> CQPM</label>
+            <label><input type="checkbox" name="spe" value="SPE"> SPE</label>
+            <label><input type="checkbox" name="sn"value="SN"> SN</label>
+            <label><input type="checkbox" name="slam" value="SLAM"> SLAM</label>
+            <label><input type="checkbox" name="sisr" value="SISR"> SISR</label>
+
+
+            
         </div>
         <img class="image" alt="visuelPiece" name="imagePiece" id="imagePiece" src="../assets/images/50-Lycee-Robert-Schuman.jpg" width="80" height="80" required>
         <br>
