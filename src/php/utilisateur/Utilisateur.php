@@ -97,47 +97,38 @@ class Utilisateur{
 
     public static function connexion($email, $mdp) {
         $conn = new SQLConnexion();
-        $res = $conn->bdd()->prepare("SELECT * FROM user WHERE email = :email AND mdp = :mdp");
-        $res->execute(['email'=>$email]);
-        $user = $res -> fetch();
+        $res = $conn->bdd()->prepare("SELECT * FROM user WHERE email = :email");
+        $res->execute(['email' => $email]);
+        $user = $res->fetch();
 
-        $id = $user['id_user'];
-        $usernom = $user['nom'];
-        $userprenom = $user['prenom'];
-        $useremail = $user['email'];
-        $usermdp = $user['mdp'];
-        $userfonction = $user['ref_fonction'];
-
-        if (password_verify($mdp, $usermdp)) {
+        if ($user && password_verify($mdp, $user['mdp'])) {
             session_start();
 
-            $_SESSION['id_user'] = $id;
-            $_SESSION['nom'] = $usernom;
-            $_SESSION['prenom'] = $userprenom;
-            $_SESSION['email'] = $useremail;
+            $_SESSION['id_user'] = $user['id_user'];
+            $_SESSION['nom'] = $user['nom'];
+            $_SESSION['prenom'] = $user['prenom'];
+            $_SESSION['email'] = $user['email'];
 
-            header("Location: ../../../html/index.php");
-            return true;
+            $userfonction = $user['ref_fonction'];
+
+            if ($userfonction == 1) {
+                $_SESSION['fonction'] = "Professeur";
+            } else if ($userfonction == 2) {
+                $_SESSION['fonction'] = "Elève";
+            } else if ($userfonction == 3) {
+                $_SESSION['fonction'] = "DDFPT";
+            } else if ($userfonction == 4) {
+                $_SESSION['fonction'] = "Comptabilité";
+            }
+
+            header("Location: ../../../html/MenuPrincipal.php");
+            exit();
+            
         } else {
             header("Location: ../../../html/connexion.html");
-            return false;
+            exit(); 
+            
         }
-        if($userfonction == 1){
-            $_SESSION['fonction'] = "Professeur";
-            header("Location: ../../../html/index.php");
-        } else if($userfonction == 2){
-            $_SESSION['fonction'] = "Elève";
-            header("Location: ../../../html/index.php");
-        } else if($userfonction == 3){
-            $_SESSION['fonction'] = "DDFPT";
-            header("Location: ../../../html/index.php");
-        } else if ($userfonction == 4){
-            $_SESSION['fonction'] = "Comptabilité";
-            header("Location: ../../../html/index.php");
-        } else {
-            header("Location: ../../../html/connexion.html");
-        }
-        
     }
     
 

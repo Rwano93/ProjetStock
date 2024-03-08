@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 29 fév. 2024 à 19:42
+-- Généré le : ven. 08 mars 2024 à 07:33
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -253,14 +253,21 @@ CREATE TABLE IF NOT EXISTS `projet` (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
   `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `mdp` varchar(255) NOT NULL,
   `ref_fonction` int NOT NULL,
-  `nom` int NOT NULL,
-  `prenom` int NOT NULL,
   PRIMARY KEY (`id_user`),
   KEY `fk_user_fonction` (`ref_fonction`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id_user`, `nom`, `prenom`, `email`, `mdp`, `ref_fonction`) VALUES
+(2, 'ADMIN', 'Admin', 'admin@lprs.fr', '$2y$10$yGsataUEsHXnohPian.y4u8zokigsiqvr4ON9OwNT8qZVpW7icNEW', 1);
 
 --
 -- Contraintes pour les tables déchargées
