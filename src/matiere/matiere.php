@@ -27,7 +27,7 @@ class Matiere{
     }
 
 
-    public function ajoueter(){
+    public function ajouter(){
         $bdd = new PDO ('mysql:host=localhost;dbname=projet_stock;charset=utf8', 'root', '');
         $req = $bdd->prepare("INSERT INTO matiere(nom, longeur, hauteur, epaisseur, largeur, diametre)
         VALUES(:nom, :longeur, :hauteur, :epaisseur, :largeur, :diametre");
