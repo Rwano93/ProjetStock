@@ -118,7 +118,11 @@
     <br>
     <h2>Menu Principal</h2>
     <button class="btn-vert" name="btncommande">Commander</button>
-    <button class="btn-orange" name="btnajout">Ajouter</button>
+    
+    <form action="ajouter.html" method="post">
+        <button class="btn-orange" name="btnajout">Ajouter</button>
+    </form>
+        
     <button class="btn-rouge" name="btnerreur">Erreur</button>
     <form action="gestionDeProjet.php">
         <button type="submit" class="btn-bleu" name="btnprojet">Débit</button>

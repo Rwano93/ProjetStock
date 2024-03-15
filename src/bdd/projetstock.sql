@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS `classe` (
   `id_classe` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) NOT NULL,
   PRIMARY KEY (`id_classe`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 --
 -- Déchargement des données de la table `classe`
@@ -66,7 +67,8 @@ CREATE TABLE IF NOT EXISTS `commande` (
   KEY `fk_commande_user` (`ref_user`),
   KEY `fk_commande_fournisseur` (`ref_fournisseur`),
   KEY `fk_commande_classe` (`ref_classe`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,8 @@ CREATE TABLE IF NOT EXISTS `debit` (
   KEY `fk_debit_classe` (`ref_classe`),
   KEY `fk_debit_piece` (`ref_piece`),
   KEY `fk_debit_matiere` (`ref_matiere`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -101,7 +104,8 @@ CREATE TABLE IF NOT EXISTS `fonction` (
   `id_fonction` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(100) NOT NULL,
   PRIMARY KEY (`id_fonction`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 --
 -- Déchargement des données de la table `fonction`
@@ -124,7 +128,8 @@ CREATE TABLE IF NOT EXISTS `forme` (
   `id_forme` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(99) NOT NULL,
   PRIMARY KEY (`id_forme`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -138,7 +143,8 @@ CREATE TABLE IF NOT EXISTS `fournisseur` (
   `entreprise` varchar(200) NOT NULL,
   `mail` varchar(150) NOT NULL,
   PRIMARY KEY (`id_fournisseur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -151,7 +157,8 @@ CREATE TABLE IF NOT EXISTS `materiau` (
   `id_materiau` int NOT NULL AUTO_INCREMENT,
   `libellle` varchar(100) NOT NULL,
   PRIMARY KEY (`id_materiau`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -173,7 +180,8 @@ CREATE TABLE IF NOT EXISTS `matiere` (
   PRIMARY KEY (`id_matiere`),
   KEY `fk_piece_materiau` (`ref_materiau`),
   KEY `fk_piece_forme` (`ref_forme`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -189,7 +197,8 @@ CREATE TABLE IF NOT EXISTS `matierecommande` (
   `quantite` int NOT NULL,
   PRIMARY KEY (`ref_matiere`,`ref_commande`),
   KEY `fk_piececommande_commande` (`ref_commande`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -203,7 +212,8 @@ CREATE TABLE IF NOT EXISTS `matierepiece` (
   `ref_piece` int NOT NULL,
   PRIMARY KEY (`ref_matiere`,`ref_piece`),
   KEY `fk_matierepiece_piece` (`ref_piece`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -217,7 +227,8 @@ CREATE TABLE IF NOT EXISTS `piece` (
   `nom` varchar(100) NOT NULL,
   `img` varchar(200) NOT NULL,
   PRIMARY KEY (`id_piece`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -231,7 +242,8 @@ CREATE TABLE IF NOT EXISTS `pieceprojet` (
   `ref_projet` int NOT NULL,
   PRIMARY KEY (`ref_piece`,`ref_projet`),
   KEY `fk_pieceprojet_projet` (`ref_projet`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -245,7 +257,8 @@ CREATE TABLE IF NOT EXISTS `projet` (
   `nom` varchar(100) NOT NULL,
   `img` varchar(100) NOT NULL,
   PRIMARY KEY (`id_projet`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 -- --------------------------------------------------------
 
@@ -258,12 +271,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8
+ NOT NULL,
   `mdp` varchar(255) NOT NULL,
   `ref_fonction` int NOT NULL,
   PRIMARY KEY (`id_user`),
   KEY `fk_user_fonction` (`ref_fonction`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8
+;
 
 --
 -- Déchargement des données de la table `user`
