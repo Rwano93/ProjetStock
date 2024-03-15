@@ -26,62 +26,62 @@ class Utilisateur{
         }
     }
 
-    public function getIdUser(): int
+    public function getIdUser()
     {
         return $this->id_user;
     }
 
-    public function setIdUser(int $id_user): void
+    public function setIdUser(int $id_user)
     {
         $this->id_user = $id_user;
     }
 
-    public function getNom(): string
+    public function getNom()
     {
         return $this->nom;
     }
 
-    public function setNom(string $nom): void
+    public function setNom(string $nom)
     {
         $this->nom = $nom;
     }
 
-    public function getPrenom(): string
+    public function getPrenom()
     {
         return $this->prenom;
     }
 
-    public function setPrenom(string $prenom): void
+    public function setPrenom(string $prenom)
     {
         $this->prenom = $prenom;
     }
 
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): void
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
 
-    public function getMdp(): string
+    public function getMdp()
     {
         return $this->mdp;
     }
 
-    public function setMdp(string $mdp): void
+    public function setMdp(string $mdp) 
     {
         $this->mdp = $mdp;
     }
 
-    public function getFonction(): string
+    public function getFonction()
     {
         return $this->fonction;
     }
 
-    public function getIdFonction(): String {
+    public function getIdFonction() {
         $conn = new SQLConnexion();
         $req = $conn->bdd()->prepare("SELECT id_fonction FROM `fonction` WHERE libelle = :fonction");
         $req->execute(["fonction"=>$this->fonction]);
@@ -90,7 +90,7 @@ class Utilisateur{
         return $res['id_fonction'];
     }
 
-    public function setFonction(String $fonction): void
+    public function setFonction(String $fonction)
     {
         $this->fonction = $fonction;
     }

@@ -2,7 +2,6 @@
 include '..//bdd/projetstock.sql';
 class Matiere{
     private $id;
-
     private $nom;
     private $longeur;
     private $hauteur;
