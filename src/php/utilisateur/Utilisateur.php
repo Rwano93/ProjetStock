@@ -1,8 +1,5 @@
 <?php
 
-include '../../bdd/SQLConnexion.php';
-
-
 class Utilisateur{
 
     private $id_user;
@@ -130,7 +127,11 @@ return true;
 return false;            
         }
     }
-    
+    public static function deconnexion() {
+        session_start();
+        session_destroy();
+        return true;
+    }
 
         
 
