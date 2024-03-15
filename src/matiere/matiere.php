@@ -27,7 +27,7 @@ class Matiere{
 
 
     public function ajouter(){
-        $bdd = new PDO ('mysql:host=localhost;dbname=projet_stock;charset=utf8', 'root', '');
+        $bdd = new PDO ('mysql:host=localhost;dbname=projetstock;charset=utf8', 'root', '');
         $req = $bdd->prepare("INSERT INTO matiere(nom, longeur, hauteur, epaisseur, largeur, diametre)
         VALUES(:nom, :longeur, :hauteur, :epaisseur, :largeur, :diametre");
         $req -> execute(array(
@@ -49,7 +49,7 @@ class Matiere{
         }
     }
     public function modifier(){
-        $bdd = new PDO ('mysql:host=localhost;dbname=projet_stock;charset=utf8', 'root', '');
+        $bdd = new PDO ('mysql:host=localhost;dbname=projetstock;charset=utf8', 'root', '');
         $req = $bdd->prepare("UPDATE matiere SET nom = :nom, longeur = :longeur, hauteur = :hauteur, epaisseur = :epaisseur, largeur = :largeur, diametre = :diametre WHERE id = :id");
         $req -> execute(array(
             'nom '=> $this->nom,
@@ -69,7 +69,7 @@ class Matiere{
         }
     }
     public function supprimer(){
-        $bdd = new PDO ('mysql:host=localhost;dbname=projet_stock;charset=utf8', 'root', '');
+        $bdd = new PDO ('mysql:host=localhost;dbname=projetstock;charset=utf8', 'root', '');
         $req = $bdd->prepare("DELETE FROM matiere WHERE id = :id");
         $req -> execute(array(
             'id '=> $this->id
