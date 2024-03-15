@@ -98,6 +98,34 @@
       margin-bottom: 5px; /* Réduit l'espacement en bas */
     }
 
+    .add-container {
+      border: 1px dashed #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: calc(33.33% - 20px);
+      box-sizing: border-box;
+      background-color: #fff; /* Couleur de fond blanche */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .add-container:hover {
+      background-color: #f0f0f0; /* Couleur de fond gris clair au survol */
+    }
+
+    .add-container i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    .add-container span {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
   </style>
 </head>
 <body>
@@ -173,6 +201,10 @@
         <button class="modify">Modifier</button>
         <button class="delete">Supprimer</button>
       </div>
+    </div>
+    <div class="add-container">
+      <i class="fas fa-plus-circle"></i>
+      <span>Ajouter</span>
     </div>
   </div>
 </div>
