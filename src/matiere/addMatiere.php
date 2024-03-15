@@ -4,5 +4,6 @@ include 'matiere.php';
 
 $matiere = new Matiere($_POST);
 $matiere->ajouter();
+
 ?>
 
