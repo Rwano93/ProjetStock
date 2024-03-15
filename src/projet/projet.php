@@ -1,5 +1,5 @@
 <?php
-include '../SQLConnexion.php';
+include '../../bdd/SQLConnexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

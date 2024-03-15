@@ -1,5 +1,4 @@
 <?php
-include "../php/utilisateur/Utilisateur.php";
 class SQLConnexion {
     private $conn;
     public function __construct()

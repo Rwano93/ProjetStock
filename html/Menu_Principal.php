@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,90 +5,125 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <title>Menu Principal</title>
 
     <style>
+        /* Reset CSS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: rgba(255, 255, 255, 0.8);
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
             padding: 0;
-            
         }
 
         .container {
-            text-align: center;
-            padding: 20px;
+            background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
         }
 
         select,
         input,
         button {
             margin-bottom: 10px;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
-            background-color: beige;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
         }
 
-
-        select, input {
-            width: 100%;
-            box-sizing: border-box;
+        select:hover,
+        input:hover,
+        button:hover {
+            background-color: #e0e0e0;
         }
-</style>
+
+        select,
+        input {
+            width: calc(100% - 40px);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .btn-vert {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .btn-orange {
+            background-color: #ff9800;
+            color: #fff;
+        }
+
+        .btn-rouge {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .btn-bleu {
+            background-color: #2196f3;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
 
-
-    <header class="date-header">
-        <div class="container">
-            <p class="date" id="currentDate"></p>
-        </div>
-    </header>
-
+<header class="date-header">
     <div class="container">
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-        <link rel="stylesheet" href="../css/menu_principal.css">
-        <link rel="stylesheet" href="../css/mes-styles.css">
-        <body style="background-color:white;">
-
-        Professeur : <select class="scrolll" name="professeur" id="professeur-select" required>
-            <option value="">Choix Professeur</option>
-            <option value="M.Lestrelin">M.Lestrelin</option>
-            <option value="M.Lemoine">M.Lemoine</option>
-            <option value="M.Mattei">M.Mattei</option>
-        </select>
-        <br>
-        Unite pedagogique : <select class="scrolll" name="unite-Pedagogique" id="unite-select" required>
-            <option value="">Choix de classe</option>
-            <option></option>
-        </select>
-        <br>
-        Date : <input type="date" id="dateCommande" name="date" required>
-        <br>
-        Fournisseur : <select class="scrolll" name="fournisseur" id="fournisseur-select" required>
-            <option value="">Choix du fournisseur</option>
-            <option></option>
-        </select>
-        <br>
-        <h2>Menue Principal</h2>
-        <button class="btn-vert" name="btncommande">Commander</button>
-        <button class="btn-orange" name="btnajout">Ajouter</button>
-        <button class="btn-rouge" name="btnerreur">Erreur</button>
-        <form action="gestionDeProjet.php">
-            <button type="submit" class="btn-bleu" name="btnprojet">Débit</button>
-        </form>
-        </body>
+        <p class="date" id="currentDate"></p>
     </div>
+</header>
+
+<div class="container">
+        
+    <select class="scrolll" name="professeur" id="professeur-select" required>
+        <option value="">Choix Professeur</option>
+        <option value="M.Lestrelin">M.Lestrelin</option>
+        <option value="M.Lemoine">M.Lemoine</option>
+        <option value="M.Mattei">M.Mattei</option>
+    </select>
+    <br>
+    <select class="scrolll" name="unite-Pedagogique" id="unite-select" required>
+        <option value="">Choix de classe</option>
+        <!-- Ajoutez vos options ici -->
+    </select>
+    <br>
+    <input type="date" id="dateCommande" name="date" required>
+    <br>
+    <select class="scrolll" name="fournisseur" id="fournisseur-select" required>
+        <option value="">Choix du fournisseur</option>
+        <!-- Ajoutez vos options ici -->
+    </select>
+    <br>
+    <h2>Menu Principal</h2>
+    <button class="btn-vert" name="btncommande">Commander</button>
+    <button class="btn-orange" name="btnajout">Ajouter</button>
+    <button class="btn-rouge" name="btnerreur">Erreur</button>
+    <form action="gestionDeProjet.php">
+        <button type="submit" class="btn-bleu" name="btnprojet">Débit</button>
+    </form>
+</div>
 
 </body>
 </html>

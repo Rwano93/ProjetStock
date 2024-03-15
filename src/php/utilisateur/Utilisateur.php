@@ -123,11 +123,11 @@ class Utilisateur{
                 $_SESSION['fonction'] = "Comptabilité";
             }
 
-            header("Location: ../../../html/Menu_Principal.php");
-            
+//            header("Location: ../../../html/Menu_Principal.php");
+return true;            
         } else {
-            header("Location: ../../../html/connexion.html");
-            
+//            header("Location: ../../../html/connexion.html");
+return false;            
         }
     }
     
