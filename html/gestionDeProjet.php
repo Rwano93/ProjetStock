@@ -6,7 +6,16 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+<style>
+  body{
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+</style>
 <body>
+</style>
 <div id="nav-bar">
   <input id="nav-toggle" type="checkbox"/>
   <div id="nav-header">
@@ -16,7 +25,7 @@
   </div>
   <div id="nav-content">
     <a href="GestionMatiere.php" class="nav-button"><i class="fas fa-images"></i><span>Gestion Matière</span></a>
-    <a href="GestionProjet.php" class="nav-button"><i class="fas fa-thumbtack"></i><span>Gestion Projet</span></a>
+    <a href="GestionDeProjet.php" class="nav-button"><i class="fas fa-thumbtack"></i><span>Gestion Projet</span></a>
     <hr/>
     <a href="gestionDeDebit.php" class="nav-button"><i class="fas fa-heart"></i><span>Débit Matière</span></a>
     <a href="commande.php" class="nav-button"><i class="fas fa-chart-line"></i><span>Commande De Matière</span></a>
