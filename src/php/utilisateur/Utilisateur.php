@@ -1,5 +1,8 @@
 <?php
 
+require_once '../../bdd/SQLConnexion.php';
+
+
 class Utilisateur{
 
     private String $id_user;
@@ -92,10 +95,10 @@ class Utilisateur{
         $this->fonction = $fonction;
     }
 
-    public static function connexion($email, $mdp) {
+    public static function CONNEXION($email, $mdp) {
         $bdd = new SqlConnexion();
         $con = $bdd->connexion();
-        $req = $con->prepare('SELECT * FROM utilisateur WHERE email = :email  AND mdp = :mdp ');
+        $req = $con->prepare('SELECT * FROM user WHERE email = :email  AND mdp = :mdp ');
         $req->execute(array(
             'email' => $email,
             'mdp' => $mdp,
@@ -127,7 +130,7 @@ class Utilisateur{
 
     public function inscription() {
         $bdd = new PDO('mysql:host=localhost;dbname=projet_vol;charset=utf8', 'root', '');
-        $req = $bdd->prepare('INSERT INTO utilisateur(nom, prenom, age, ville, email, mdp) VALUES(:nom, :prenom, :age, :ville, :email, :mdp)');
+        $req = $bdd->prepare('INSERT INTO user(nom, prenom, age, ville, email, mdp) VALUES(:nom, :prenom, :age, :ville, :email, :mdp)');
         $req->execute(array(
             'nom' => $this->nom,
             'prenom' => $this->prenom,
