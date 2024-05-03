@@ -2,21 +2,14 @@
 
 class Utilisateur{
 
-<<<<<<< HEAD
-    private  $id_user;
-    private  $nom;
-    private  $prenom;
-    private  $email;
-    private $mdp;
-    private $fonction;
-=======
+
     private $id_user;
     private String $nom;
     private String $prenom;
     private String $email;
     private String $mdp;
     private String $fonction;
->>>>>>> 8a2b378918e7d043ae7b1f6242b9a5c22f2c16b1
+
 
     function __construct(array $donnees) {
         $this->hydrate($donnees);
@@ -101,17 +94,6 @@ class Utilisateur{
         $this->fonction = $fonction;
     }
 
-<<<<<<< HEAD
-    public function connexion() {
-        $bdd = new SqlConnexion();
-        $con = $bdd->connexion();
-        $req = $con->prepare('SELECT * FROM utilisateur WHERE email = :email  AND mdp = :mdp ');
-        $req->execute(array(
-            'email' => $this->email,
-            'mdp' => $this->mdp,
-        ));
-        $resultat = $req->fetch();
-=======
     public static function connexion($email, $mdp) {
         $conn = new SQLConnexion();
         $res = $conn->bdd()->prepare("SELECT * FROM user WHERE email = :email");
@@ -146,7 +128,7 @@ return true;
 //            header("Location: ../../../html/connexion.html");
 return false;            
         }
->>>>>>> 8a2b378918e7d043ae7b1f6242b9a5c22f2c16b1
+
     }
     public static function deconnexion() {
         session_start();
@@ -154,20 +136,7 @@ return false;
         return true;
     }
     public function inscription() {
-<<<<<<< HEAD
-        $bdd = new PDO('mysql:host=localhost;dbname=projet_vol;charset=utf8', 'root', '');
-        $req = $bdd->prepare('INSERT INTO utilisateur(nom, prenom, age, ville, email, mdp) VALUES(:nom, :prenom, :age, :ville, :email, :mdp)');
-        $req->execute(array(
-            'nom' => $this->nom,
-            'prenom' => $this->prenom,
-            'email' => $this->email,
-            'mdp' => $this->mdp,
-                         
-        ));
-        $res = $req->fetch();
-        if ($res) {
-            
-=======
+
         $conn = new SQLConnexion();
         $add_user = $conn->bdd()->prepare("INSERT INTO user (nom, prenom, email, mdp, ref_fonction) VALUES (:nom, :prenom, :email, :mdp, :fonction)");
         $add_user->execute(['nom'=>$this->getNom(), 'prenom'=>$this->getPrenom(), 'email'=>$this->getEmail(), 'mdp' =>$this->getMdp(), 'fonction'=>$this->getIdFonction()]);
@@ -176,7 +145,7 @@ return false;
 
         if ($id_user) {
             session_start();
->>>>>>> 8a2b378918e7d043ae7b1f6242b9a5c22f2c16b1
+
 
             $_SESSION['id_user'] = $id_user;
             $_SESSION['nom'] = $this->getNom();
