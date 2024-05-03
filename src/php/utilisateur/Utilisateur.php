@@ -2,12 +2,12 @@
 
 class Utilisateur{
 
-    private String $id_user;
-    private String $nom;
-    private String $prenom;
-    private String $email;
-    private String $mdp;
-    private String $fonction;
+    private  $id_user;
+    private  $nom;
+    private  $prenom;
+    private  $email;
+    private $mdp;
+    private $fonction;
 
     function __construct(array $donnees) {
         $this->hydrate($donnees);
@@ -92,39 +92,21 @@ class Utilisateur{
         $this->fonction = $fonction;
     }
 
-    public static function connexion($email, $mdp) {
+    public function connexion() {
         $bdd = new SqlConnexion();
         $con = $bdd->connexion();
         $req = $con->prepare('SELECT * FROM utilisateur WHERE email = :email  AND mdp = :mdp ');
         $req->execute(array(
-            'email' => $email,
-            'mdp' => $mdp,
+            'email' => $this->email,
+            'mdp' => $this->mdp,
         ));
         $resultat = $req->fetch();
-
-        if (!$resultat) {
-            return false;
-        } else {
-            session_start();
-            $_SESSION['id_user'] = $resultat['id_user'];
-            $_SESSION['nom'] = $resultat['nom'];
-            $_SESSION['prenom'] = $resultat['prenom'];
-            $_SESSION['email'] = $resultat['email'];
-            $_SESSION['mdp'] = $resultat['mdp'];
-            $_SESSION['fonction'] = $resultat['fonction'];
-
-            return true;
-        }
     }
     public static function deconnexion() {
         session_start();
         session_destroy();
         return true;
     }
-
-        
-
-
     public function inscription() {
         $bdd = new PDO('mysql:host=localhost;dbname=projet_vol;charset=utf8', 'root', '');
         $req = $bdd->prepare('INSERT INTO utilisateur(nom, prenom, age, ville, email, mdp) VALUES(:nom, :prenom, :age, :ville, :email, :mdp)');
@@ -137,7 +119,7 @@ class Utilisateur{
         ));
         $res = $req->fetch();
         if ($res) {
-            session_start();
+            
 
            
             $_SESSION['nom'] = $this->getNom();

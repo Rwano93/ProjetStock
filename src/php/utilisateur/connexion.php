@@ -1,18 +1,25 @@
 <?php
 
 var_dump($_POST);
+include ('../../bdd/SQLConnexion.php');
+include ('Utilisateur.php');
 
-include 'Utilisateur.php';
+$utlisateur = new Utilisateur($_POST);
 
-$email = $_POST['email'];
-$mdp = $_POST['mdp'];
+$utlisateur->connexion();
 
-$estOk = Utilisateur::connexion($email, $mdp);
-if ($estOk){
-    header('Location: ../../../html/Menu_Principal.php');
+
+
+if ($utlisateur->connexion() == true){
+    
+        session_start();
+        header('Location: ../../../html/Menu_Principal.php');
+
+    
 }else{
     header('Location: ../../../html/connexion.html');
 }
+
 
  
 
