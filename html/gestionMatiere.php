@@ -125,6 +125,41 @@
       font-weight: bold;
       font-size: 16px;
     }
+    .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  }
+
+  .modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  }
+
+  .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  }
+
 
   </style>
 </head>
@@ -203,7 +238,7 @@
       </div>
     </div>
     <div id="ajouterMatiere" class="add-container">
-      <form action="ajouter.html"></form>
+    <form action="../src/matiere/addMatiere.php" method="post">
       <i class="fas fa-plus-circle"></i>
       <span>Ajouter</span>
     </div>
@@ -217,12 +252,48 @@
     $('#deconnexion').on('click', function() {
       window.location.href = "../src/php/utilisateur/deconnexion.php"; 
     });
-    $('#ajouterMatiere').on('click', function() {
-      window.location.href = "ajouter.html"; 
-    });
+    
   });
+  $(document).ready(function() {
+    $(document).ready(function() {
+  $('#ajouterMatiere').on('click', function(event) {
+    
+    event.preventDefault();
+    
+    
+    $('#modal').css('display', 'block');
+  });
+  
+  
+  $('.close').on('click', function() {
+    $('#modal').css('display', 'none');
+  });
+
+});
+
+});
+
+
+
   
 </script>
 
 </body>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Ajouter une matière</h2>
+    <form action="../src/matiere/addMatiere.php" method="post">
+      <input type="text" name="nom" placeholder="Nom de la matière" required>
+      <input type="text" name="longueur" placeholder="Longueur" required>
+      <input type="text" name="largeur" placeholder="Largeur" required>
+      <input type="text" name="hauteur" placeholder="Hauteur" required>
+      <input type="text" name="epaisseur" placeholder="Epaisseur" required>
+      <input type="text" name="diametre" placeholder="Diamètre" required>
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+</div>
+
 </html>
