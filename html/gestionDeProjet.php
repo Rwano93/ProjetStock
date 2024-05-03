@@ -118,7 +118,7 @@
 <div id="nav-bar">
   <input id="nav-toggle" type="checkbox"/>
   <div id="nav-header">
-    <a id="nav-title" href="Menu_Principal.php" target="_blank">C<i class="fab fa-codepen"></i>DEPEN</a>
+    <a id="nav-title" href="GestionMatiere.php" target="_blank">Gestion Stock <i class="fab fa-codepen"></i></a>
     <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
     <hr/>
   </div>

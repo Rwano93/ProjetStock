@@ -102,14 +102,19 @@
       font-size: 14px;
       margin-bottom: 5px;
     }
+    .body{
+      text-align: center;
+      margin: center;
+    }
 
   </style>
 </head>
+<h1>Historique </h1>
 <body>
 <div id="nav-bar">
   <input id="nav-toggle" type="checkbox"/>
   <div id="nav-header">
-    <a id="nav-title" href="Menu_Principal.php" target="_blank">C<i class="fab fa-codepen"></i>DEPEN</a>
+    <a id="nav-title" href="GestionMatiere.php" target="_blank">Gestion Stock <i class="fab fa-codepen"></i></a>
     <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
     <hr/>
   </div>
@@ -129,6 +134,7 @@
       <div id="nav-footer-titlebox"><a id="nav-footer-title" href="https://codepen.io/uahnbu/pens/public" target="_blank">uahnbu</a><span id="nav-footer-subtitle">Admin</span></div>
       <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
     </div>
+    
     <div id="nav-footer-content">
       <Lorem>Bienvenue dans notre projet stock
         Erwan, Nathan, Ilyes 
