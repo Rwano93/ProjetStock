@@ -68,7 +68,7 @@ class Matiere{
 
     public function ajouter(){
         $bdd = new SQLConnexion();
-        $bdd = $bdd->connexion();
+        $bdd = $bdd->bdd();
         $req = $bdd->prepare("INSERT INTO matiere(nom, longueur, hauteur, epaisseur, largeur, diametre)
         VALUES(:nom, :longueur, :hauteur, :epaisseur, :largeur, :diametre)");
         $success = $req->execute(array(
@@ -89,7 +89,7 @@ class Matiere{
     }
     public function modifier(){
         $bdd = new SQLConnexion();
-        $bdd = $bdd->connexion();
+        $bdd = $bdd->bdd();
         $req = $bdd->prepare("UPDATE matiere SET nom = :nom, longueur = :longueur, hauteur = :hauteur, epaisseur = :epaisseur, largeur = :largeur, diametre = :diametre WHERE id = :id");
         $req -> execute(array(
             'nom '=> $this->nom,
@@ -110,7 +110,7 @@ class Matiere{
     }
     public function supprimer(){
         $bdd = new SQLConnexion();
-        $bdd = $bdd->connexion();
+        $bdd = $bdd-> bdd();
         $req = $bdd->prepare("DELETE FROM matiere WHERE id = :id");
         $req -> execute(array(
             'id '=> $this->id
@@ -124,7 +124,7 @@ class Matiere{
     }
     public function afficherMatiere(){
         $bdd = new SQLConnexion();
-        $bdd = $bdd->connexion();
+        $bdd = $bdd->bdd();
         $req = $bdd->prepare("SELECT * FROM matiere");
         $req -> execute();
         $res= $req->fetch();
