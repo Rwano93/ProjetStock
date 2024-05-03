@@ -256,19 +256,37 @@
   });
   $(document).ready(function() {
     $(document).ready(function() {
-  $('#ajouterMatiere').on('click', function(event) {
-    
-    event.preventDefault();
-    
-    
+  
+  $('#ajouterMatiere').on('click', function() {
     $('#modal').css('display', 'block');
   });
-  
+
   
   $('.close').on('click', function() {
     $('#modal').css('display', 'none');
   });
 
+  
+  $('#form-ajout-matiere').submit(function(event) {
+    
+    event.preventDefault();
+
+    
+    var formData = $(this).serialize();
+
+    
+    $.ajax({
+      url: '../src/matiere/addMatiere.php',
+      type: 'POST',
+      data: formData,
+      success: function(response) {
+        
+        $('.checkbox-container').append(response);
+        
+        $('#modal').css('display', 'none');
+      }
+    });
+  });
 });
 
 });

@@ -1,5 +1,5 @@
 <?php
-include '..//bdd/projetstock.sql';
+
 class Matiere{
     private $id;
     private $nom;
@@ -71,7 +71,7 @@ class Matiere{
         $bdd = $bdd->bdd();
         $req = $bdd->prepare("INSERT INTO matiere(nom, longueur, hauteur, epaisseur, largeur, diametre)
         VALUES(:nom, :longueur, :hauteur, :epaisseur, :largeur, :diametre)");
-        $req -> execute(array(
+        $success = $req->execute(array(
             'nom'=> $this->nom,
             'longueur'=>$this->longueur,
             'hauteur'=>$this->hauteur,
@@ -79,13 +79,13 @@ class Matiere{
             'largeur'=> $this->largeur,
             'diametre'=>$this->diametre
         ));
-        $res= $req->fetch();
 
-        if($req){
-            echo "insertion reussi";
+        if($success){
+            echo "insertion réussie";
         }else{
-            echo "echec d'insertion";
+            echo "échec de l'insertion";
         }
+        
     }
     public function modifier(){
         $bdd = new SQLConnexion();

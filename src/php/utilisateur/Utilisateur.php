@@ -94,7 +94,7 @@ class Utilisateur{
         $this->fonction = $fonction;
     }
 
-    public static function connexion($email, $mdp) {
+    public function connexion($email, $mdp) {
         $conn = new SQLConnexion();
         $res = $conn->bdd()->prepare("SELECT * FROM user WHERE email = :email");
         $res->execute(['email' => $email]);
