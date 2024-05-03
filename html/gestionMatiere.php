@@ -154,7 +154,7 @@
     </div>
     <div id="nav-footer-content">
       <Lorem>Bienvenue dans notre projet stock
-        Erwan, Nathan, Ilyes 
+        Erwan, Nathan 
       </Lorem>
     </div>
   </div>
@@ -202,7 +202,8 @@
         <button class="delete">Supprimer</button>
       </div>
     </div>
-    <div class="add-container">
+    <div id="ajouterMatiere" class="add-container">
+      <form action="ajouter.html"></form>
       <i class="fas fa-plus-circle"></i>
       <span>Ajouter</span>
     </div>
@@ -216,7 +217,11 @@
     $('#deconnexion').on('click', function() {
       window.location.href = "../src/php/utilisateur/deconnexion.php"; 
     });
+    $('#ajouterMatiere').on('click', function() {
+      window.location.href = "ajouter.html"; 
+    });
   });
+  
 </script>
 
 </body>
