@@ -2,12 +2,21 @@
 
 class Utilisateur{
 
+<<<<<<< HEAD
     private  $id_user;
     private  $nom;
     private  $prenom;
     private  $email;
     private $mdp;
     private $fonction;
+=======
+    private $id_user;
+    private String $nom;
+    private String $prenom;
+    private String $email;
+    private String $mdp;
+    private String $fonction;
+>>>>>>> 8a2b378918e7d043ae7b1f6242b9a5c22f2c16b1
 
     function __construct(array $donnees) {
         $this->hydrate($donnees);
@@ -80,7 +89,7 @@ class Utilisateur{
 
     public function getIdFonction() {
         $conn = new SQLConnexion();
-        $req = $conn->connexion()->prepare("SELECT id_fonction FROM `fonction` WHERE libelle = :fonction");
+        $req = $conn->bdd()->prepare("SELECT id_fonction FROM `fonction` WHERE libelle = :fonction");
         $req->execute(["fonction"=>$this->fonction]);
         $res = $req->fetch();
 
@@ -92,6 +101,7 @@ class Utilisateur{
         $this->fonction = $fonction;
     }
 
+<<<<<<< HEAD
     public function connexion() {
         $bdd = new SqlConnexion();
         $con = $bdd->connexion();
@@ -101,6 +111,42 @@ class Utilisateur{
             'mdp' => $this->mdp,
         ));
         $resultat = $req->fetch();
+=======
+    public static function connexion($email, $mdp) {
+        $conn = new SQLConnexion();
+        $res = $conn->bdd()->prepare("SELECT * FROM user WHERE email = :email");
+        $res->execute(['email' => $email]);
+        $user = $res->fetch();
+        
+        if ($user && $user['mdp'] == $mdp && $user['email'] == $email && !empty($user['mdp'])) {
+            session_start();
+
+
+            $_SESSION['id_user'] = $user['id_user'];
+            $_SESSION['nom'] = $user['nom'];
+            $_SESSION['prenom'] = $user['prenom'];
+            $_SESSION['email'] = $user['email'];
+
+
+            $userfonction = $user['ref_fonction'];
+
+            if ($userfonction == 1) {
+                $_SESSION['fonction'] = "Professeur";
+            } else if ($userfonction == 2) {
+                $_SESSION['fonction'] = "Elève";
+            } else if ($userfonction == 3) {
+                $_SESSION['fonction'] = "DDFPT";
+            } else if ($userfonction == 4) {
+                $_SESSION['fonction'] = "Comptabilité";
+            }
+
+//            header("Location: ../../../html/Menu_Principal.php");
+return true;            
+        } else {
+//            header("Location: ../../../html/connexion.html");
+return false;            
+        }
+>>>>>>> 8a2b378918e7d043ae7b1f6242b9a5c22f2c16b1
     }
     public static function deconnexion() {
         session_start();
@@ -108,6 +154,7 @@ class Utilisateur{
         return true;
     }
     public function inscription() {
+<<<<<<< HEAD
         $bdd = new PDO('mysql:host=localhost;dbname=projet_vol;charset=utf8', 'root', '');
         $req = $bdd->prepare('INSERT INTO utilisateur(nom, prenom, age, ville, email, mdp) VALUES(:nom, :prenom, :age, :ville, :email, :mdp)');
         $req->execute(array(
@@ -120,8 +167,18 @@ class Utilisateur{
         $res = $req->fetch();
         if ($res) {
             
+=======
+        $conn = new SQLConnexion();
+        $add_user = $conn->bdd()->prepare("INSERT INTO user (nom, prenom, email, mdp, ref_fonction) VALUES (:nom, :prenom, :email, :mdp, :fonction)");
+        $add_user->execute(['nom'=>$this->getNom(), 'prenom'=>$this->getPrenom(), 'email'=>$this->getEmail(), 'mdp' =>$this->getMdp(), 'fonction'=>$this->getIdFonction()]);
 
-           
+        $id_user = $conn->bdd()->lastInsertId();
+
+        if ($id_user) {
+            session_start();
+>>>>>>> 8a2b378918e7d043ae7b1f6242b9a5c22f2c16b1
+
+            $_SESSION['id_user'] = $id_user;
             $_SESSION['nom'] = $this->getNom();
             $_SESSION['prenom'] = $this->getPrenom();
             $_SESSION['email'] = $this->getEmail();
@@ -137,13 +194,10 @@ class Utilisateur{
         }
     }
 
-        
-    
-
     public function regarderSiMailExiste(): bool {
         $conn = new SQLConnexion();
 
-        $check_mail = $conn->connexion()->prepare("SELECT email FROM user WHERE email = :email");
+        $check_mail = $conn->bdd()->prepare("SELECT email FROM user WHERE email = :email");
         $check_mail->execute(['email'=>$this->getEmail()]);
 
         $email = $check_mail->fetch();

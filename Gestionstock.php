@@ -75,13 +75,13 @@
  <label for="produit">Produit :</label>
  <?php
 
- include 'php/SQLConnexion.php';
+ include 'src/bdd/SQLConnexion.php';
 $con = new SQLConnexion();
-$conn = $con->bdd();
+$conn = $con->connexion();
 
  // Récupérer les produits depuis la base de données
  $sql = "SELECT * FROM matiere";
- $result = $conn->query($sql);
+    $result = $conn->query($sql);
 
  if ($result->rowCount() > 0) {
  echo '<select id="produit" name="produit">';

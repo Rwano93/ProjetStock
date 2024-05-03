@@ -1,17 +1,24 @@
 <?php
 class SQLConnexion {
-    private $host = "localhost";
-    
-    private $username = "root";
-    private $password = "";
-    private $database = "projet_vol";
-    public function connexion() {
+    private $conn;
 
-        $pdo = new PDO('mysql:host='.$this->host.';dbname='.$this->database.';',$this->username, $this->password);
+    public function __construct()
+    {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $bddname = "projetstock";
 
+        try {
+            $this->conn = new PDO("mysql:host=$servername;dbname=".$bddname, $username, $password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
+    }
 
-        
-
-        return $pdo;
+    public function bdd(): PDO {
+        return $this->conn;
     }
 }
+?>
