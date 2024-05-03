@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>ProjetStock</title>
   <link rel="stylesheet" href="../css/style.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
@@ -11,8 +12,10 @@
       background-color: #f4f4f4;
       margin: 0;
       padding: 0;
+      min-height: 100vh; /* Ajout pour s'étendre sur toute la hauteur de la fenêtre */
+      display: flex;
+      flex-direction: column;
     }
-
     .nav-button {
       position: relative;
       margin-left: 16px;
@@ -31,23 +34,15 @@
       padding-left: 24px;
     }
 
-    .nav-button span {
-      transition: transform 0.2s;
-    }
-
-    .nav-button:hover span {
-      transform: translateX(5px);
-    }
-
     .container {
       max-width: 800px;
       margin: 20px auto;
       padding: 20px;
-      background-color: #f8f8f8;
+      background-color: #f8f8f8; /* Blanc légèrement grisé */
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       position: relative;
-      flex-grow: 1;
+      flex-grow: 1; /* Pour étirer le contenu */
     }
 
     .checkbox-container {
@@ -64,7 +59,7 @@
       margin-bottom: 20px;
       width: calc(33.33% - 20px);
       box-sizing: border-box;
-      background-color: #f0f0f0;
+      background-color: #f0f0f0; /* Couleur de fond plus foncée */
     }
 
     .box:nth-child(3n) {
@@ -75,32 +70,46 @@
       margin-right: 0;
     }
 
-    .button-container {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
+    .dimension-label {
+      font-size: 14px; /* Réduit la taille de la police */
+      margin-bottom: 5px; /* Réduit l'espacement en bas */
     }
 
-    .button-container button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
+    .add-container {
+      border: 1px dashed #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: calc(33.33% - 20px);
+      box-sizing: border-box;
+      background-color: #fff; /* Couleur de fond blanche */
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
     }
 
-    .button-container button.modify {
-      background-color: #3498db;
-      color: #fff;
+    .add-container:hover {
+      background-color: #f0f0f0; /* Couleur de fond gris clair au survol */
     }
 
-    .button-container button.delete {
-      background-color: #e74c3c;
-      color: #fff;
+    .add-container i {
+      font-size: 24px;
+      margin-right: 10px;
     }
 
-    .dimension-label {
-      font-size: 14px;
-      margin-bottom: 5px;
+    .add-container span {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .image {
+      text-align: center;
     }
 
   </style>
@@ -136,5 +145,41 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="checkbox-container">
+    <div class="box">
+      <div class="title">Titre de la case 1</div>
+      <div class="image"><img src="chemin/vers/mon/image1.jpg" alt="Image 1"></div>
+    </div>
+    <div class="box">
+      <div class="title">Titre de la case 2</div>
+      <div class="image"><img src="chemin/vers/mon/image2.jpg" alt="Image 2"></div>
+    </div>
+    <div class="box">
+      <div class="title">Titre de la case 3</div>
+      <div class="image"><img src="chemin/vers/mon/image3.jpg" alt="Image 3"></div>
+    </div>
+    <div class="box">
+      <div class="title">Titre de la case 4</div>
+      <div class="image"><img src="chemin/vers/mon/image4.jpg" alt="Image 4"></div>
+    </div>
+    <div class="add-container">
+      <i class="fas fa-plus-circle"></i>
+      <span>Ajouter</span>
+    </div>
+  </div>
+</div>
+
+<!-- Script jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#deconnexion').on('click', function() {
+      window.location.href = "../src/php/utilisateur/deconnexion.php"; 
+    });
+  });
+</script>
+
 </body>
 </html>

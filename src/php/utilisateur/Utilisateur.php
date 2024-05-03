@@ -97,7 +97,7 @@ class Utilisateur{
         $res = $conn->bdd()->prepare("SELECT * FROM user WHERE email = :email");
         $res->execute(['email' => $email]);
         $user = $res->fetch();
-
+        
         if ($user && $user['mdp'] == $mdp && $user['email'] == $email && !empty($user['mdp'])) {
             session_start();
 

@@ -9,7 +9,7 @@ $mdp = $_POST['mdp'];
 
 $estOk = Utilisateur::connexion($email, $mdp);
 if ($estOk){
-    header('Location: ../../../html/Menu_Principal.php');
+    header('Location: ../../../html/gestionMatiere.php');
 }else{
     header('Location: ../../../html/connexion.html');
 }
