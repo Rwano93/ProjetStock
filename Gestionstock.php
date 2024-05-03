@@ -77,7 +77,7 @@
 
  include 'src/bdd/SQLConnexion.php';
 $con = new SQLConnexion();
-$conn = $con->connexion();
+$conn = $con->bdd();
 
  // Récupérer les produits depuis la base de données
  $sql = "SELECT * FROM matiere";
