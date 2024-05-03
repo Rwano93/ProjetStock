@@ -9,23 +9,26 @@ class Matiere{
     private $largeur;
     private $diametre;
 
-    //methode get
-
     public function getNom(){
         return $this->nom;
     }
-    public function getLongeur(){
+
+    public function getLongueur(){ // Correction: Renommage de getLongeur à getLongueur
         return $this->longueur;
     }
+
     public function getHauteur(){
         return $this->hauteur;
     }
+
     public function getEpaisseur(){
         return $this->epaisseur;
     }
+
     public function getLargeur(){
         return $this->largeur;
     }
+
     public function getDiametre(){
         return $this->diametre;
     }
@@ -33,38 +36,39 @@ class Matiere{
     public function setNom($nom){
         $this->nom = $nom;
     }
+
     public function setLongueur($longueur){
         $this->longueur = $longueur;
     }
+
     public function setHauteur($hauteur){
         $this->hauteur = $hauteur;
     }
+
     public function setEpaisseur($epaisseur){
         $this->epaisseur = $epaisseur;
     }
+
     public function setLargeur($largeur){
         $this->largeur = $largeur;
     }
+
     public function setDiametre($diametre){
         $this->diametre = $diametre;
     }
 
-
-    //methode hydrate
-    public function hydrate(array $donne){
-        foreach($donne as $key => $value){
-            $method= 'set'.ucfirst($key);
+    public function hydrate(array $donnees){
+        foreach($donnees as $key => $value){
+            $method = 'set'.ucfirst($key);
             if(method_exists($this,$method)){
-
                 $this->$method($value);
             }
         }
     }
 
-    public function __construct(array $donne){
-        $this->hydrate($donne);
+    public function __construct(array $donnees){
+        $this->hydrate($donnees);
     }
-
 
     public function ajouter(){
         $bdd = new SQLConnexion();
@@ -87,20 +91,20 @@ class Matiere{
         }
         
     }
+
     public function modifier(){
         $bdd = new SQLConnexion();
         $bdd = $bdd->bdd();
         $req = $bdd->prepare("UPDATE matiere SET nom = :nom, longueur = :longueur, hauteur = :hauteur, epaisseur = :epaisseur, largeur = :largeur, diametre = :diametre WHERE id = :id");
         $req -> execute(array(
-            'nom '=> $this->nom,
-            'longeur'=>$this->longueur, 
-            'hauteur'=>$this->hauteur,
-            'epaisseur'=>$this->epaisseur,
-            'largeur'=> $this->largeur,
-            'diametre'=>$this->diametre
-
+            'nom' => $this->nom,
+            'longueur' => $this->longueur, 
+            'hauteur' => $this->hauteur,
+            'epaisseur' => $this->epaisseur,
+            'largeur' => $this->largeur,
+            'diametre' => $this->diametre,
+            'id' => $this->id 
         ));
-        $res= $req->fetch();
 
         if($req){
             echo "modification reussi";
@@ -108,12 +112,13 @@ class Matiere{
             echo "echec de modification";
         }
     }
+
     public function supprimer(){
         $bdd = new SQLConnexion();
-        $bdd = $bdd-> bdd();
+        $bdd = $bdd->bdd();
         $req = $bdd->prepare("DELETE FROM matiere WHERE id = :id");
         $req -> execute(array(
-            'id '=> $this->id
+            'id' => $this->id 
         ));
 
         if($req){
@@ -122,16 +127,13 @@ class Matiere{
             echo "echec de suppression";
         }
     }
+
     public function afficherMatiere(){
         $bdd = new SQLConnexion();
         $bdd = $bdd->bdd();
         $req = $bdd->prepare("SELECT * FROM matiere");
         $req -> execute();
-        $res= $req->fetch();
-
-      
-
-}
-
-    
+        $res = $req->fetchAll(); 
+        return $res; 
+    }
 }
